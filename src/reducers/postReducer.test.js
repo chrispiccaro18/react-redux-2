@@ -89,4 +89,24 @@ describe('post reducer tests', () => {
       '003': { id: '003', title: 'testTitle', body: 'testBody' }
     });
   });
+  
+  it('can handle update post, no title', () => {
+    const initialState = {
+      '001': { id: '001', title: 'testTitle', body: 'testBody' },
+      '002': { id: '002', title: 'testTitle', body: 'testBody' },
+      '003': { id: '003', title: 'testTitle', body: 'testBody' }
+    };
+    const newState = postReducer(initialState, updatePost('001', null, 'body update'));
+
+    expect(Object.values(newState)).toEqual([
+      { id: '001', title: 'testTitle', body: 'body update' },
+      { id: '002', title: 'testTitle', body: 'testBody' },
+      { id: '003', title: 'testTitle', body: 'testBody' }
+    ]);
+    expect(initialState).toEqual({
+      '001': { id: '001', title: 'testTitle', body: 'testBody' },
+      '002': { id: '002', title: 'testTitle', body: 'testBody' },
+      '003': { id: '003', title: 'testTitle', body: 'testBody' }
+    });
+  });
 });

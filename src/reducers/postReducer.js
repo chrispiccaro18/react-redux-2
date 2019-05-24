@@ -38,5 +38,10 @@ function deletePostWithId(state, id) {
 
 function updatePostWithId(state, payload) {
   const { postId, titleUpdate, bodyUpdate } = payload;
-  return { ...state, [postId]: { title: titleUpdate, body: bodyUpdate, id: postId } };
+  const oldPost = state[postId];
+  if(!titleUpdate) {
+    return { ...state, [postId]: { title: oldPost.title, body: bodyUpdate, id: postId } };
+  } else {
+    return { ...state, [postId]: { title: titleUpdate, body: bodyUpdate, id: postId } };
+  }
 }
