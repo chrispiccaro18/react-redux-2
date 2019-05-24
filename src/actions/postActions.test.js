@@ -1,4 +1,4 @@
-import { addPost, ADD_POST, deletePost, DELETE_POST } from './PostActions';
+import { addPost, ADD_POST, deletePost, DELETE_POST, updatePost, UPDATE_POST } from './PostActions';
 
 describe('post actions', () => {
   it('can add a post', () => {
@@ -15,6 +15,17 @@ describe('post actions', () => {
     expect(deletePost('001')).toEqual({
       type: DELETE_POST,
       payload: '001'
+    });
+  });
+  
+  it('can update a post', () => {
+    expect(updatePost('001', 'testUpdateT', 'testUpdateB')).toEqual({
+      type: UPDATE_POST,
+      payload: {
+        postId: '001',
+        titleUpdate: 'testUpdateT',
+        bodyUpdate: 'testUpdateB'
+      }
     });
   });
 });
