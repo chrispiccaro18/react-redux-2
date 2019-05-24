@@ -1,5 +1,5 @@
 import postReducer from './postReducer';
-import { addPost, deletePost } from '../actions/PostActions';
+import { addPost, deletePost, updatePost } from '../actions/PostActions';
 
 describe('post reducer tests', () => {
   it('can handle add post, empty initial state', () => {
@@ -61,6 +61,26 @@ describe('post reducer tests', () => {
 
     expect(Object.values(newState)).toEqual([
       { id: '001', title: 'testTitle', body: 'testBody' },
+      { id: '003', title: 'testTitle', body: 'testBody' }
+    ]);
+    expect(initialState).toEqual({
+      '001': { id: '001', title: 'testTitle', body: 'testBody' },
+      '002': { id: '002', title: 'testTitle', body: 'testBody' },
+      '003': { id: '003', title: 'testTitle', body: 'testBody' }
+    });
+  });
+  
+  it('can handle update post, multiple posts', () => {
+    const initialState = {
+      '001': { id: '001', title: 'testTitle', body: 'testBody' },
+      '002': { id: '002', title: 'testTitle', body: 'testBody' },
+      '003': { id: '003', title: 'testTitle', body: 'testBody' }
+    };
+    const newState = postReducer(initialState, updatePost('001', 'title update', 'body update'));
+
+    expect(Object.values(newState)).toEqual([
+      { id: '001', title: 'title update', body: 'body update' },
+      { id: '002', title: 'testTitle', body: 'testBody' },
       { id: '003', title: 'testTitle', body: 'testBody' }
     ]);
     expect(initialState).toEqual({
