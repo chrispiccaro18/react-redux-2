@@ -41,6 +41,8 @@ function updatePostWithId(state, payload) {
   const oldPost = state[postId];
   if(!titleUpdate) {
     return { ...state, [postId]: { title: oldPost.title, body: bodyUpdate, id: postId } };
+  } else if(!bodyUpdate) {
+    return { ...state, [postId]: { title: titleUpdate, body: oldPost.body, id: postId } };
   } else {
     return { ...state, [postId]: { title: titleUpdate, body: bodyUpdate, id: postId } };
   }
