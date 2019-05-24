@@ -50,4 +50,23 @@ describe('post reducer tests', () => {
       '001': { id: '001', title: 'testTitle', body: 'testBody' }
     });
   });
+  
+  it('can handle delete post, multiple posts', () => {
+    const initialState = {
+      '001': { id: '001', title: 'testTitle', body: 'testBody' },
+      '002': { id: '002', title: 'testTitle', body: 'testBody' },
+      '003': { id: '003', title: 'testTitle', body: 'testBody' }
+    };
+    const newState = postReducer(initialState, deletePost('002'));
+
+    expect(Object.values(newState)).toEqual([
+      { id: '001', title: 'testTitle', body: 'testBody' },
+      { id: '003', title: 'testTitle', body: 'testBody' }
+    ]);
+    expect(initialState).toEqual({
+      '001': { id: '001', title: 'testTitle', body: 'testBody' },
+      '002': { id: '002', title: 'testTitle', body: 'testBody' },
+      '003': { id: '003', title: 'testTitle', body: 'testBody' }
+    });
+  });
 });
