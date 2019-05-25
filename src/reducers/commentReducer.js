@@ -1,5 +1,6 @@
 import shortId from 'shortid';
 import { ADD_COMMENT, DELETE_COMMENT, UPDATE_COMMENT } from '../actions/commentActions';
+import { DELETE_POST } from '../actions/PostActions';
 
 const initialState = {};
 
@@ -12,6 +13,8 @@ export default function commentReducer(state = initialState, action) {
       return deleteCommentWithId(state, payload);
     case UPDATE_COMMENT:
       return updateCommentWithId(state, payload);
+    case DELETE_POST:
+      return deletePostWithId(state, payload);
     default:
       return state;
   }
@@ -44,4 +47,10 @@ function updateCommentWithId(state, payload) {
     ...state[postId].slice(indexOfUpdate + 1)
   ];
   return { ...state, [postId]: [...newComments] };
+}
+
+function deletePostWithId(state, postId) {
+  // eslint-disable-next-line no-unused-vars
+  const { [postId]: _, ...newState } = state;
+  return newState;
 }
