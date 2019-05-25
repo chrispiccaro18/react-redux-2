@@ -17,5 +17,8 @@ export default function commentReducer(state = initialState, action) {
 function addCommentWithId(state, payload) {
   const id = shortId.generate();
   const { postId, commentBody } = payload;
-  return { ...state, [postId]: { id, commentBody } };
+  if(!state[postId]) {
+    return { ...state, [postId]: [{ id, commentBody }] };
+  }
+  return { ...state, [postId]: [...state[postId], { id, commentBody }] };
 }

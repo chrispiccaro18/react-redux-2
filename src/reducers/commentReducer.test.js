@@ -7,11 +7,11 @@ describe('comment reducer', () => {
     const newState = commentReducer(initialState, addComment('001', 'test comment'));
 
     expect(newState).toEqual({
-      '001': {
-        id: expect.anything(),
-        commentBody: 'test comment'
-      }
+      '001': [
+        { id: expect.anything(), commentBody: 'test comment' }
+      ]
     });
     expect(initialState).toEqual({});
   });
+  
 });
