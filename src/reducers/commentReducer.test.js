@@ -1,5 +1,5 @@
 import commentReducer from './commentReducer';
-import { addComment, deleteComment } from '../actions/commentActions';
+import { addComment, deleteComment, updateComment } from '../actions/commentActions';
 
 describe('comment reducer', () => {
   it('can handle add comment, empty initial state', () => {
@@ -74,6 +74,26 @@ describe('comment reducer', () => {
         { id: '0001', commentBody: 'comment1' },
         { id: '0002', commentBody: 'comment2' },
         { id: '0003', commentBody: 'comment3' }
+      ]
+    });
+  });
+
+  it('can handle update comment, post has 1 comment', () => {
+    const initialState = {
+      '001': [
+        { id: '0001', commentBody: 'comment' }
+      ]
+    };
+    const newState = commentReducer(initialState, updateComment('001', '0001', 'update'));
+
+    expect(newState).toEqual({
+      '001': [
+        { id: '0001', commentBody: 'update' }
+      ]
+    });
+    expect(initialState).toEqual({
+      '001': [
+        { id: '0001', commentBody: 'comment' }
       ]
     });
   });
