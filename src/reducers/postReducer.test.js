@@ -14,7 +14,7 @@ describe('post reducer tests', () => {
     expect(initialState).toEqual({});
   });
   
-  it('can handle add post', () => {
+  it('can handle add post, not empty state', () => {
     const initialState = {
       '001': { id: '001', title: 'testTitle', body: 'testBody' },
       '002': { id: '002', title: 'testTitle', body: 'testBody' },
