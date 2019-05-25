@@ -140,4 +140,55 @@ describe('comment reducer', () => {
       ]
     });
   });
+
+  it('can handle delete post, post has multiple comments and posts', () => {
+    const initialState = {
+      '001': [
+        { id: '0001', commentBody: 'comment1' },
+        { id: '0002', commentBody: 'comment2' },
+        { id: '0003', commentBody: 'comment3' }
+      ],
+      '002': [
+        { id: '0001', commentBody: 'comment1' },
+        { id: '0002', commentBody: 'comment2' },
+        { id: '0003', commentBody: 'comment3' }
+      ],
+      '003': [
+        { id: '0001', commentBody: 'comment1' },
+        { id: '0002', commentBody: 'comment2' },
+        { id: '0003', commentBody: 'comment3' }
+      ]
+    };
+    const newState = commentReducer(initialState, deletePost('002'));
+
+    expect(newState).toEqual({
+      '001': [
+        { id: '0001', commentBody: 'comment1' },
+        { id: '0002', commentBody: 'comment2' },
+        { id: '0003', commentBody: 'comment3' }
+      ],
+      '003': [
+        { id: '0001', commentBody: 'comment1' },
+        { id: '0002', commentBody: 'comment2' },
+        { id: '0003', commentBody: 'comment3' }
+      ]
+    });
+    expect(initialState).toEqual({
+      '001': [
+        { id: '0001', commentBody: 'comment1' },
+        { id: '0002', commentBody: 'comment2' },
+        { id: '0003', commentBody: 'comment3' }
+      ],
+      '002': [
+        { id: '0001', commentBody: 'comment1' },
+        { id: '0002', commentBody: 'comment2' },
+        { id: '0003', commentBody: 'comment3' }
+      ],
+      '003': [
+        { id: '0001', commentBody: 'comment1' },
+        { id: '0002', commentBody: 'comment2' },
+        { id: '0003', commentBody: 'comment3' }
+      ]
+    });
+  });
 });
