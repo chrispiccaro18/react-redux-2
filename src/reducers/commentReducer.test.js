@@ -35,7 +35,7 @@ describe('comment reducer', () => {
     });
   });
   
-  it('can handle delete comment', () => {
+  it('can handle delete comment, post has 1 comment', () => {
     const initialState = {
       '001': [
         { id: '0001', commentBody: 'comment' }
@@ -49,6 +49,31 @@ describe('comment reducer', () => {
     expect(initialState).toEqual({
       '001': [
         { id: '0001', commentBody: 'comment' }
+      ]
+    });
+  });
+  
+  it('can handle delete comment, post has multiple comment', () => {
+    const initialState = {
+      '001': [
+        { id: '0001', commentBody: 'comment1' },
+        { id: '0002', commentBody: 'comment2' },
+        { id: '0003', commentBody: 'comment3' }
+      ]
+    };
+    const newState = commentReducer(initialState, deleteComment('001', '0002'));
+
+    expect(newState).toEqual({
+      '001': [
+        { id: '0001', commentBody: 'comment1' },
+        { id: '0003', commentBody: 'comment3' }
+      ]
+    });
+    expect(initialState).toEqual({
+      '001': [
+        { id: '0001', commentBody: 'comment1' },
+        { id: '0002', commentBody: 'comment2' },
+        { id: '0003', commentBody: 'comment3' }
       ]
     });
   });
