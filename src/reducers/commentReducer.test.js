@@ -97,4 +97,30 @@ describe('comment reducer', () => {
       ]
     });
   });
+
+  it('can handle update comment, post has multiple comment', () => {
+    const initialState = {
+      '001': [
+        { id: '0001', commentBody: 'comment1' },
+        { id: '0002', commentBody: 'comment2' },
+        { id: '0003', commentBody: 'comment3' }
+      ]
+    };
+    const newState = commentReducer(initialState, updateComment('001', '0002', 'update'));
+
+    expect(newState).toEqual({
+      '001': [
+        { id: '0001', commentBody: 'comment1' },
+        { id: '0002', commentBody: 'update' },
+        { id: '0003', commentBody: 'comment3' }
+      ]
+    });
+    expect(initialState).toEqual({
+      '001': [
+        { id: '0001', commentBody: 'comment1' },
+        { id: '0002', commentBody: 'comment2' },
+        { id: '0003', commentBody: 'comment3' }
+      ]
+    });
+  });
 });
