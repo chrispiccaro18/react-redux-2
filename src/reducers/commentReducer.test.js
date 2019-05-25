@@ -14,4 +14,25 @@ describe('comment reducer', () => {
     expect(initialState).toEqual({});
   });
   
+  it('can handle add comment, non-empty initial state', () => {
+    const initialState = {
+      '001': [
+        { id: '0001', commentBody: 'comment' }
+      ]
+    };
+    const newState = commentReducer(initialState, addComment('001', 'test comment'));
+
+    expect(newState).toEqual({
+      '001': [
+        { id: '0001', commentBody: 'comment' },
+        { id: expect.anything(), commentBody: 'test comment' }
+      ]
+    });
+    expect(initialState).toEqual({
+      '001': [
+        { id: '0001', commentBody: 'comment' }
+      ]
+    });
+  });
+  
 });
