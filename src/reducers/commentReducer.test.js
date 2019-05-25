@@ -1,5 +1,5 @@
 import commentReducer from './commentReducer';
-import { addComment } from '../actions/commentActions';
+import { addComment, deleteComment } from '../actions/commentActions';
 
 describe('comment reducer', () => {
   it('can handle add comment, empty initial state', () => {
@@ -35,4 +35,21 @@ describe('comment reducer', () => {
     });
   });
   
+  it('can handle delete comment', () => {
+    const initialState = {
+      '001': [
+        { id: '0001', commentBody: 'comment' }
+      ]
+    };
+    const newState = commentReducer(initialState, deleteComment('001', '0001'));
+
+    expect(newState).toEqual({
+      '001': []
+    });
+    expect(initialState).toEqual({
+      '001': [
+        { id: '0001', commentBody: 'comment' }
+      ]
+    });
+  });
 });
