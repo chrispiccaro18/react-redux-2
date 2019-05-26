@@ -1,6 +1,6 @@
 import shortId from 'shortid';
 import { ADD_COMMENT, DELETE_COMMENT, UPDATE_COMMENT } from '../actions/commentActions';
-import { DELETE_POST } from '../actions/PostActions';
+import { DELETE_POST } from '../actions/postActions';
 
 const initialState = {};
 
