@@ -1,6 +1,6 @@
 import commentReducer from './commentReducer';
 import { addComment, deleteComment, updateComment } from '../actions/commentActions';
-import { deletePost } from '../actions/PostActions';
+import { deletePost } from '../actions/postActions';
 
 describe('comment reducer', () => {
   it('can handle add comment, empty initial state', () => {
