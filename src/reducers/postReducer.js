@@ -1,5 +1,5 @@
 import shortId from 'shortid';
-import { ADD_POST, DELETE_POST, UPDATE_POST } from '../actions/PostActions';
+import { ADD_POST, DELETE_POST, UPDATE_POST } from '../actions/postActions';
 
 const initialState = {};
 
