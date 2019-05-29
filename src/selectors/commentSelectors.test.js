@@ -1,4 +1,4 @@
-import { getComments } from './commentSelectors';
+import { getComments, getComment } from './commentSelectors';
 
 describe('comment selector tests', () => {
   const state = {
@@ -18,5 +18,12 @@ describe('comment selector tests', () => {
       { id: '0005', commentBody: 'comment5' }, 
       { id: '0006', commentBody: 'comment6' }
     ]);
+  });
+
+  it('selects a comment of a post', () => {
+    expect(getComment(state, '002', '0004')).toEqual({ 
+      id: '0004', 
+      commentBody: 'comment4' 
+    });
   });
 });
