@@ -1,4 +1,4 @@
-import { addPost, ADD_POST, deletePost, DELETE_POST, updatePost, UPDATE_POST } from './PostActions';
+import { addPost, ADD_POST, deletePost, DELETE_POST, updatePost, UPDATE_POST } from './postActions';
 
 describe('post actions', () => {
   it('can add a post', () => {

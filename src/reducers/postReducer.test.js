@@ -1,5 +1,5 @@
 import postReducer from './postReducer';
-import { addPost, deletePost, updatePost } from '../actions/PostActions';
+import { addPost, deletePost, updatePost } from '../actions/postActions';
 
 describe('post reducer tests', () => {
   it('can handle add post, empty initial state', () => {
