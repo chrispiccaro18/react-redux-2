@@ -1,4 +1,4 @@
-import { getPosts } from './postSelectors';
+import { getPosts, getPost } from './postSelectors';
 
 describe('post selectors test', () => {
   const state = {
@@ -19,5 +19,10 @@ describe('post selectors test', () => {
       { id: '002', title: 'title2', body: 'body2' },
       { id: '003', title: 'title3', body: 'body3' }
     ]);
+  });
+  it('selects a post by id', () => {
+    expect(getPost(state, '002')).toEqual({ 
+      id: '002', title: 'title2', body: 'body2' 
+    });
   });
 });
