@@ -4,7 +4,7 @@ import Post from './Post';
 
 function Posts({ posts }) {
   const postLis = posts.map(post => (
-    <Post key={post.id} post={post}/>
+    <Post key={post.id} post={post} />
   ));
   return (
     <ul>

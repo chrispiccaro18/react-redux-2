@@ -1,14 +1,16 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import Post from './posts/Post';
+import Posts from './posts/Posts';
 
 export default function App() {
-  const post = { id: '22', title: 'hi', body: 'there' };
+  const posts = [
+    { id: '001', title: 'title1', body: 'body1' },
+    { id: '002', title: 'title2', body: 'body2' },
+    { id: '003', title: 'title3', body: 'body3' }
+  ];
   return (
     <Router>
-      <ul>
-        <Post post={post}></Post>
-      </ul>
+      <Posts posts={posts} />
     </Router>
   );
 }
