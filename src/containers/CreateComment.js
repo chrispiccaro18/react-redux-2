@@ -4,7 +4,7 @@ import { addComment } from '../actions/commentActions';
 
 const mapDispatchToProps = (dispatch, props) => ({
   commentOnSubmit(commentBody) {
-    dispatch(addComment(props.match.params.id, commentBody));
+    dispatch(addComment(props.id, commentBody));
   }
 });
 

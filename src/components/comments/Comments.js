@@ -4,7 +4,7 @@ import Comment from './Comment';
 
 function Comments({ comments }) {
   const commentLis = comments.map(comment => (
-    <Comment key={comment.id} comment={comment.commentBody} />
+    <Comment key={comment.id} comment={comment} />
   ));
   return (
     <ul>
