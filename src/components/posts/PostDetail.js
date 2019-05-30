@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Comments from '../comments/Comments';
 import CreateComment from '../../containers/comments/CreateComment';
+import AllComments from '../../containers/comments/AllComments';
 
-function PostDetail({ post, comments }) {
+function PostDetail({ post }) {
   const { title, body, id } = post;
   return (
     <>
@@ -13,7 +13,7 @@ function PostDetail({ post, comments }) {
     </section>
     <section>
       <h3>Comments</h3>
-      <Comments comments={comments} />
+      <AllComments id={id} />
     </section>
     <section>
       <CreateComment id={id} />
@@ -28,7 +28,6 @@ PostDetail.propTypes = {
     title: PropTypes.string.isRequired,
     body: PropTypes.string.isRequired
   }).isRequired,
-  comments: PropTypes.array.isRequired
 };
 
 export default PostDetail;
