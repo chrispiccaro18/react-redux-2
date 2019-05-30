@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Comments from '../comments/Comments';
-import CreateComment from '../../containers/CreateComment';
+import CreateComment from '../../containers/comments/CreateComment';
 
 function PostDetail({ post, comments }) {
   const { title, body, id } = post;
